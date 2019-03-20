@@ -8,8 +8,6 @@ import matplotlib.pyplot as plt
 
 max_words = 10000
 
-# fashion_mnist = keras.datasets.imdb
-
 (x_train, y_train), (x_test, y_test) = keras.datasets.imdb.load_data(num_words=max_words)
 
 X = np.concatenate((x_train, x_test), axis=0)
@@ -55,6 +53,7 @@ print(model.summary())
 
 # Fit the model
 model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=2, batch_size=128, verbose=2)
+
 # Final evaluation of the model
 scores = model.evaluate(x_test, y_test, verbose=0)
 print("Accuracy: %.2f%%" % (scores[1] * 100))
