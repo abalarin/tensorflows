@@ -1,3 +1,6 @@
 *.pdf
 tensorflow-for-poets-2
 Convolutional_neural_network
+dataset.xlsx
+temp
+venv
