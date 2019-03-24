@@ -17,13 +17,13 @@ def extract_data(filename):
     features = [row[2] for row in data.values.astype('U')]
     labels = [row[3] for row in data.values]
 
+    for i, text in enumerate(features):
+        features[i] = keras.preprocessing.text.one_hot(text, max_words, filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n', lower=True, split=' ')
+
     return features, labels
 
 
-x_test, y_test = extract_data('./temp/dataset3.xlsx')
-
-for i, text in enumerate(x_test):
-    x_test[i] = keras.preprocessing.text.one_hot(text, max_words, filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n', lower=True, split=' ')
+x_test, y_test = extract_data('./temp/datasets/dataset_train.xlsx')
 
 x_test = keras.preprocessing.sequence.pad_sequences(x_test, maxlen=500)
 
